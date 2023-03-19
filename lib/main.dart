@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'pages/home/home_page.dart';
+import 'pages/home/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           //labelLarge: TextStyle(fontSize: 14.0),
         ),
       ),
-      home: const HomePage(),
+      home: Home(),
     );
   }
 }

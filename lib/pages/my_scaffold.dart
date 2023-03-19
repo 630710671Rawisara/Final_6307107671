@@ -19,10 +19,17 @@ class MyScaffold extends StatelessWidget {
 
     return Scaffold(
       appBar: appBar,
-      body: Container(
-        margin: EdgeInsets.only(left: horizontalMargin, right: horizontalMargin),
-        decoration: decoration,
-        child: body,
+      body: Stack(
+        children: [
+          Container(
+            margin: EdgeInsets.only(left: horizontalMargin, right: horizontalMargin),
+            decoration: decoration,
+            child: body,
+          ),
+          Card(
+
+          ),
+        ],
       ),
     );
   }
