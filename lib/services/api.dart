@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:election_2566_poll/models/poll.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -24,6 +25,25 @@ class ApiClient {
   // todo: สร้างเมธอดสำหรับ request ไปยัง API โดยเรียกใช้เมธอด _makeRequest() ที่อาจารย์เตรียมไว้ให้ด้านล่างนี้
   // ดูตัวอย่างได้จากเมธอด getAllStudents(), getStudentById(), etc. ในโปรเจ็ค class_attendance
   // https://github.com/3bugs/cpsu_class_attendance_frontend/blob/master/lib/services/api.dart
+
+  Future<List<Poll>> getAllPoll() async {
+    var responseBody = await _makeRequest(
+      HttpMethod.get,
+      '/polls',
+    );
+    List list = responseBody.data;
+    return list.map((item) => Poll.fromJson(item)).toList();
+  }
+
+  Future<Poll?> getPollById(String id) async {
+    var responseBody = await _makeRequest(
+      HttpMethod.get, //get ตือการเรียกข้อมูลเข้ามา
+      '/polls/$id/results',
+    );
+    Map<String, dynamic>? map = responseBody.data;
+    return map != null ? Poll.fromJson(map) : null;
+  }
+
 
   Future<ResponseBody> _makeRequest(
       HttpMethod httpMethod,
