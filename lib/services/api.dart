@@ -26,7 +26,7 @@ class ApiClient {
   // ดูตัวอย่างได้จากเมธอด getAllStudents(), getStudentById(), etc. ในโปรเจ็ค class_attendance
   // https://github.com/3bugs/cpsu_class_attendance_frontend/blob/master/lib/services/api.dart
 
-  Future<List<Poll>> getAllPoll() async {
+  Future<List<Poll>> getAllPolls() async {
     var responseBody = await _makeRequest(
       HttpMethod.get,
       '/polls',
